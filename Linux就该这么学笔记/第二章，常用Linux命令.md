@@ -186,3 +186,7 @@
   -group|匹配所有组
   -mtime -n +n|匹配修改内容时间（-n为n天以内，+n为n天以前）
   -atime -n +n|匹配访问文件时间
+  -exec .... {} \;|后面可跟用于进一步处理搜索结果的命令
+
+  例子：find / -user linuxprobe -exec cp -a {} /root/findresults/ \;  
+  在整个文件系统中寻找属于用户linuxprobe的文件，并复制到/root/findresults目录。其中{}代表find命令找到的每一个文件。
