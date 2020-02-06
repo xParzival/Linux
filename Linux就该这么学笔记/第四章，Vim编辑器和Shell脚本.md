@@ -93,21 +93,21 @@
      -z|判断字符串内容是否为空
 
 ##### 3.流程控制语句
-* if条件测试语句  
+* if 条件测试语句  
   if 条件测试操作  
   then 命令1  
   else 命令2  
   fi
-* for条件循环语句  
+* for 条件循环语句  
   for 变量名 in 取值列表  
   do  
   命令序列  
   done  
-* while条件循环语句  
+* while 条件循环语句  
   while 条件测试操作  
   do 命令序列  
   done
-* case条件测试语句  
+* case 条件测试语句  
   case 变量值 in  
   模式1)  
   命令序列1  
