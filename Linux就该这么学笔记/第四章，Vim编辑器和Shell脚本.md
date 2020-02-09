@@ -38,6 +38,16 @@
   ?字符串|在文本中从下至上搜索该字符串
   /字符串|在文本中从上至下搜索该字符串
 
+* 配置Yum软件仓库
+  1. 进入到/etc/yum.repos.d/目录，该目录存放yum软件仓库的配置文件
+  2. vim创建名为xxxx.repo的新配置文件(名称可任取，后缀必须为.repo)，逐项写入以下配置参数
+      > [rhel-media] ：Yum软件仓库唯一标识符，避免与其他仓库冲突
+      > name=xxx ：Yum软件仓库的名称描述，易于识别仓库用处
+      > baseurl=file:///media/cdrom：提供的方式包括FTP（ftp://..）、HTTP（http://..）、本地（file:///..）
+      > enabled=1：设置此源是否可用；1为可用，0为禁用
+      > gpgcheck=1：设置此源是否校验文件；1为校验，0为不校验
+      > gpgkey=file:///media/cdrom/RPM-GPG-KEY-redhat-release：若上面参数开启校验，那么请指定公钥文件地址
+
 ##### 2.编写Shell脚本
 * Shell脚本命令两种工作方式
   1. 交互式(Interactive)：用户每输入一条命令就立即执行
