@@ -4,14 +4,15 @@
   1. Vim编辑器配置网络参数
      1. 切换到/etc/sysconfig/network-scripts目录中（存放着网卡的配置文件）
      2. 使用Vim编辑器修改网卡文件ifcfg-enoxxxxxxxx，逐项写入下面的配置参数并保存退出
-        > 设备类型：TYPE=Ethernet
-        > 地址分配模式：BOOTPROTO=static
-        > 网卡名称：DEVICE=enoxxxxxxxx
-        > 是否启动：ONBOOT=yes
-        > IP地址：IPADDR=192.168.10.10
-        > 子网掩码：NETMASK=255.255.255.0
-        > 网关地址：GATEWAY=192.168.10.1
-        > DNS地址：DNS1=192.168.10.1
+        > 设备类型：TYPE=Ethernet  
+        > 地址分配模式：BOOTPROTO=static  
+        > 网卡名称：DEVICE=enoxxxxxxxx  
+        > 是否启动：ONBOOT=yes  
+        > IP地址：IPADDR=192.168.10.10  
+        > 子网掩码：NETMASK=255.255.255.0  
+        > 网关地址：GATEWAY=192.168.10.1  
+        > DNS地址：DNS1=192.168.10.1  
+
      3. 重启网络服务并测试网络是否联通
         ```systemctl restart network```
   2. nmtui命令配置网络参数:图形化界面，按照对话框设置即可
@@ -35,24 +36,26 @@
   * 网卡绑定方法
     1. 添加一块新网卡设备，与已有网卡为相同模式
     2. 配置两张网卡设备的配置文件。需要注意的是，这些原本独立的网卡设备此时需要被配置成为一块“从属”网卡，服务于“主”网卡，不应该再有自己的IP地址等信息
-        > 设备类型：TYPE=Ethernet
-        > 地址分配模式：BOOTPROTO=static
-        > 网卡名称：DEVICE=enoxxxxxxxx
-        > 是否启动：ONBOOT=yes
-        > 是否允许非root用户控制该设备：USERCTL=no
-        > 网卡绑定之后的名称：MASTER=与主网卡名一致
+        > 设备类型：TYPE=Ethernet  
+        > 地址分配模式：BOOTPROTO=static  
+        > 网卡名称：DEVICE=enoxxxxxxxx  
+        > 是否启动：ONBOOT=yes  
+        > 是否允许非root用户控制该设备：USERCTL=no  
+        > 网卡绑定之后的名称：MASTER=与主网卡名一致  
         > 是否为从属网卡：SLAVE=yes
+
     3. 配置绑定后的主网卡
-        > 设备类型：TYPE=Ethernet
-        > 地址分配模式：BOOTPROTO=static
-        > 网卡名称：DEVICE=指定名称
-        > 是否启动：ONBOOT=yes
-        > 是否允许非root用户控制该设备：USERCTL=no
-        > IP地址：IPADDR=192.168.10.10
-        > 子网掩码：NETMASK=255.255.255.0
-        > 网关地址：GATEWAY=192.168.10.1
-        > DNS地址：DNS1=192.168.10.1
+        > 设备类型：TYPE=Ethernet  
+        > 地址分配模式：BOOTPROTO=static  
+        > 网卡名称：DEVICE=指定名称  
+        > 是否启动：ONBOOT=yes  
+        > 是否允许非root用户控制该设备：USERCTL=no  
+        > IP地址：IPADDR=192.168.10.10  
+        > 子网掩码：NETMASK=255.255.255.0  
+        > 网关地址：GATEWAY=192.168.10.1  
+        > DNS地址：DNS1=192.168.10.1  
         > 是否启用network mamager使网卡配置实时生效，不需要重启：NM_CONTROLLED=no
+
     4. 让Linux内核支持网卡绑定驱动
       * 绑定模式有七种(0-6),常用以下三种之一
         1. mode0(平衡负载模式)：平时两块网卡均工作，且自动备援，但需要在与服务器本地网卡相连的交换机设备上进行端口聚合来支持绑定技术
